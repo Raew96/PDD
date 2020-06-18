@@ -1,0 +1,222 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My First Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/theme.green.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- tablesorter widgets (optional) -->
+    <script type="text/javascript" src="js/validator.js"></script>
+    <script type="text/javascript" src="/js/jquery-latest.js"></script>
+    <script>
+        $(function() {
+            $("#myTable").tablesorter();
+        });
+    </script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<header>
+    <link rel="stylesheet"href="css/theme.green.css">
+    <link rel="stylesheet"href="css/theme.green.css">
+    <!-- load jQuery and tablesorter scripts -->
+    <script type="text/javascript"src="js/jquery-latest.js"></script>
+    <script type="text/javascript"src="js/jquery.tablesorter.js"></script>
+    <!-- tablesorter widgets (optional) -->
+    <script type="text/javascript"src="js/jquery.tablesorter.widgets.js"></script>
+    <nav class=" navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">HOME</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="http://lcieszynski.zut.edu.pl/fileadmin/DPD/instrukcja_2019.pdf">Link</a>
+            </li>
+        </ul>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Koszyk
+        </button>
+    </nav>
+</header>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-2" style="background-color:yellow;">
+            <p>What is Lorem Ipsum?
+                Lorem Ipsum is simply dummy dummy text of the printing and Lorem Ipsum has been printing the industry's standard dummy  simply dummyLorem Ipsum is simply dummy dummy text of the printing and Lorem Ipsum has been printing the industry's standard dummy  simply dummy text of the printing and typesettingtext of the printing  industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsu</p>
+        </div>
+        <div class="col-12 col-sm-6 col-md-8" style="background-color:pink;">
+            <h1>Formularz dodawania towaru</h1>
+            <form class="needs-validation" id="form_id" name="form" enctype="multipart/form-data">
+                <div class="form-row">
+                    <label for="towar_name" class="col-sm-2 col-form-label">Nazwa towaru: </label>
+                    <div class="form-group col-md-6">
+                        <input id="towar_name" type="name" class="form-control"  placeholder="Towar" onBlur="sprawdzTowarName()">
+                        <div id="towar_name_blad"></div>
+                    </div>
+                </div><!-- Nazwa Towaru -->
+                <div class="form-row">
+                    <label for="kod" class="col-sm-2 col-form-label">Kod Towaru:</label>
+                    <div class="form-group col-md-6">
+                        <input id="kod" type="text" class="form-control"  placeholder="0" onblur="sprawdz_kod()">
+                        <div id="kod_blad"></div>
+                    </div>
+                </div><!-- Kod Towaru -->
+                <div class="form-row">
+                    <label for="towar_name" class="col-sm-2 col-form-label">Cenna Brutto</label>
+                    <div class="form-group col-md-4">
+                        <input id="cena_brutto" type="text" class="form-control"  placeholder="0" onblur="sprawdzCenaBrutto()" disabled>
+                    </div>
+                </div><!-- Cena Brutto -->
+                <div class="form-row">
+                    <label class="col-sm-2 col-form-label">Stawka VAT</label>
+                    <div class="form-group col-md-4">
+                        <input id="vat" type="text" class="form-control"  placeholder="0" onblur="sprawdz_vat()">
+                        <div id="vat_blad"></div>
+                    </div>
+                </div><!-- Vat -->
+                <div class="form-row">
+                    <label class="col-sm-2 col-form-label">Cena Netto</label>
+                    <div class="form-group col-md-4">
+                        <input id="cena_netto" type="text" class="form-control"  placeholder="0" onblur="sprawdzCenaNetto()" >
+                        <div id="cenna_netto_blad" class="invalid-feedback"> elo</div>
+                    </div>
+                </div><!-- Cena Netto-->
+                <div class="form-row">
+                    <label class="col-sm-2 col-form-label">Kategoria towarowa</label>
+                    <div class="form-group col-md-3">
+                        <select class="custom-select d-block w-100" id="kategoriaTowaru" onblur="walidacjaKategoria()"s>
+                            <option value="Wybierz" >Wybierz</option>
+                            <option value="Pieczywo" >Pieczywo</option>
+                            <option value="Nabiał" >Nabiał</option>
+                            <option value="Napoje" >Napoje</option>
+                        </select>
+                        <div id="kategoriaBlad">
+                        </div>
+                    </div>
+                </div><!-- Kategoria -->
+                <div class="form-row">
+                    <label class="col-sm-2 col-form-label">Opcje towaru</label>
+                    <div class="form-group" id="productOptionGroup">
+                        <div class="custom-control custom-checkbox mb-3">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="opcja1" name="productOption" value="Opcja nr 1" onchange="walidacjaCheckbox()">
+                                <label class="custom-control-label" for="opcja1">Opcja nr 1</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="opcja2" name="productOption" value="Opcja nr 2" onchange="walidacjaCheckbox()">
+                                <label class="custom-control-label" for="opcja2">Opcja nr 2</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="opcja3" name="productOption" value="Opcja nr 3" onchange="walidacjaCheckbox()">
+                                <label class="custom-control-label" for="opcja3">Opcja nr 3</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="opcja4" name="productOption" value="Opcja nr 4" onchange="walidacjaCheckbox()">
+                                <label class="custom-control-label" for="opcja4">Opcja nr 4</label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="opcja5" name="productOption" value="Opcja nr 5" onchange="walidacjaCheckbox()">
+                                <label class="custom-control-label" for="opcja5">Opcja nr 5</label>
+                            </div>
+
+                        </div>
+                        <div id="opcjaBlady" style="color:#dc3545;font-size:80%;">
+                        </div>
+                    </div>
+
+                </div><!-- Opcje -->
+                <div class="from-row">
+                    <label class="col-sm-2 col-form-label">Ocena</label>
+                    <div class="form-group col-md-4">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios"  value="1" checked>
+                            <label class="form-check-label">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios"  value="2" checked>
+                            <label class="form-check-label" >2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios"  value="3" checked>
+                            <label class="form-check-label" >3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios"  value="4" checked>
+                            <label class="form-check-label" >4</label>
+                        </div>
+                        <div class="form-check form-check-inline" >
+                            <input class="form-check-input" type="radio" name="exampleRadios"  value="5" checked>
+                            <label class="form-check-label">5</label>
+                        </div>
+                    </div>
+                </div><!-- Ocena -->
+                <div class="form-row">
+                    <label  class="col-sm-2 col-form-label">IMG: </label>
+                    <div class="form-group col-md-3">
+                        <input id="towar_img" type="text" class="form-control"  placeholder="Img" onBlur="sprawdzTowarImg()">
+                        <div id="towar_img_blad"></div>
+                    </div>
+                </div><!-- Plik -->
+                <div class="form-row">
+                    <div class="form-gropu col-md-3">
+                        <button type="button" class="btn btn-primary btn-lg btn-block" onClick="walidacjaForm()" id="przycisk" >Wyślij</button>
+                    </div>
+                </div><!-- Wyslij -->
+            </form><!--Form -->
+            <select id ="sortowanie">
+                <option>Sortuj ...</option>
+                <option value="1">A - Z</option>
+                <option value="2">Z - A</option>
+                <option value="3">Cena najniżej</option>
+                <option value="4">Cena najwyżej</option>
+                <option value="5">Ocena najniżej</option>
+                <option value="6">Ocena najwyżej</option>
+            </select>
+        </div>
+        <div class="col-sm-2" style="background-color:yellow;">
+            <div class="card border-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                <div class="card-body text-primary">
+                    <h5 class="card-title">Primary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+            <div class="card border-secondary mb-3" style="max-width: 18rem;">
+                <div class="card-header">Header</div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">Secondary card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table id="myTable" class="tablesorter tablesorter-green">
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Kod</th>
+            <th>Cena netto</th>
+            <th>VAT</th>
+            <th>Cena brutto</th>
+            <th>Kategoria</th>
+            <th>Opcja</th>
+            <th>Ocena</th>
+            <th>Zdjęcie</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table> <!-- Tablica -->
+    </div>
+</div>
+
+<footer class="footer mt-auto py-3">
+    <div class="container">
+        <span class="text-muted">Copyright© 2019</span>
+    </div>
+</footer>
+</body>
+</html>
